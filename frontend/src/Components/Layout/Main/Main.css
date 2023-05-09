@@ -1,0 +1,22 @@
+.Main {
+	direction: ltr;
+}
+
+select {
+	width: 130px;
+	height: 25px;
+}
+
+table {
+	margin: auto;
+	border-collapse: collapse;
+}
+
+table > thead,
+table > tbody,
+tr,
+th,
+td {
+	border: 1px solid white;
+	padding: 10px;
+}

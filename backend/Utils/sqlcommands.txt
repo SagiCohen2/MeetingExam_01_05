@@ -1,0 +1,41 @@
+Create group meeting table
+========================
+CREATE TABLE IF NOT EXISTS exam.group (
+  idgroup INT NOT NULL AUTO_INCREMENT,
+  groupName VARCHAR(45) NOT NULL,
+  PRIMARY KEY (idgroup));
+
+Create meetings table
+=========================
+CREATE TABLE IF NOT EXISTS exam.meetings (
+  id INT NOT NULL AUTO_INCREMENT,
+  startTime VARCHAR(45) NOT NULL,
+  endTime VARCHAR(45) NOT NULL,
+  description VARCHAR(128) NOT NULL,
+  location VARCHAR(45) NOT NULL,
+  PRIMARY KEY (id));
+
+Create new group
+=========================
+INSERT INTO exam.group 
+(idgroup, groupName) VALUES 
+('1', 'ReactTeam');
+
+Create new meeting
+=========================
+INSERT INTO exam.meetings
+(id, startTime, endTime, description) 
+VALUES 
+('1', '13:00', '14:00', 'update for new project', 'blue');
+
+Update group
+=========================
+UPDATE exam.group 
+SET groupName = 'WinnerTeam' 
+WHERE (idgroup = '3');
+
+Update meeting (that EXISTS)
+==========================
+UPDATE exam.meetings 
+SET location = 'red' 
+WHERE (id = '1');
