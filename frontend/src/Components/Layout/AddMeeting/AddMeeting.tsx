@@ -9,36 +9,15 @@ import { useState } from "react";
 
 function AddMeeting(): JSX.Element {
 
-  const [meetings, setMeetings] = useState([]);
-
-const handleChange = (event:any) => {
-  getMeetingInfo(event.target.value);        
-}
-
-const getMeetingInfo = (groupKey:number) => {
-  axios
-.get(`http://localhost:8080/api/v1/meetings/getGroup/3`)
-.then((res) => {
-  setMeetings(res.data);
-})
-.catch((err) => {
-  console.error(err);
-});
-}
-
-
 const addNewMeeting = (newMeeting: any) => {
     axios
       .post('http://localhost:8080/api/v1/meetings/addMeeting', newMeeting)
       .then((response) => {
-        console.log(response)
       })
       .catch((err) => {
         console.error(err)
       })
   }
-
-
 
     const navigate = useNavigate();
     const {
@@ -46,13 +25,6 @@ const addNewMeeting = (newMeeting: any) => {
     } = useForm<Meeting>();
     const send = (newMeeting: Meeting) => {
         console.log(newMeeting);
-        let meetings:Meeting[]=[];
-        meetings = localStorage.getItem("meetings") 
-        ? JSON.parse(localStorage.getItem("meetings"))
-        : [];
-        meetings.push(newMeeting);
-        // localStorage.setItem("meetings",JSON.stringify(meetings));
-        // console.log(meetings);
         addNewMeeting(newMeeting);
         navigate("/");
     }
